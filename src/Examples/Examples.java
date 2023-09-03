@@ -1,22 +1,32 @@
 package Examples;
 
-
+class SomeThread extends Thread{
+    public  void run(){
+        for( int i = 0; i < 10; i++)
+            System.out.println("Number  - " +i);
+    }
+}
 public class Examples {
 
 
     public static void main(String[] args) {
-        int arr[] = {23, 6, 7};
-        try{
-            System.out.println(arr[3]);
-        int x = 100 / 0;
+        SomeThread test = new SomeThread();
+        test.start();
 
-    }       catch(ArithmeticException e) {
-            System.out.println("Error" + e);
-        }catch(Exception e) {
-            System.out.println("Error" + e);
-        }finally {
-            System.out.println("Finally is working");
+        SomeThread test1 = new SomeThread();
+        test1.start();
+
+        Thread t1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for( int i = 0; i < 10; i++)
+                    System.out.println("Number  - " +i);
+
             }
+        });
+
+        t1.start();
+
         }
 
     }
